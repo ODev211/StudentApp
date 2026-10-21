@@ -1,8 +1,10 @@
+// Abstract base class representing a general student
 abstract class Student(var id: String, nameIn: String, var course: String, markIn: Double) {
 
     var name = nameIn
         protected set
 
+    // Custom property setter with validation (must be between 0 and 100)
     var mark: Double = 0.0
         set(value) {
             if (value in 0.0..100.0) {
@@ -13,9 +15,10 @@ abstract class Student(var id: String, nameIn: String, var course: String, markI
         }
 
     init {
-        this.mark = markIn // Calls the custom setter upon instantiation
+        this.mark = markIn // Ensures validation runs when the object is created
     }
 
+    // Abstract method forcing subclasses to define their own grading logic
     abstract fun getGrade(): String
 
     fun didPass(): Boolean {

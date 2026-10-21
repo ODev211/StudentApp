@@ -28,6 +28,7 @@ fun main() {
                 println("Enter mark:")
                 val mark = readln().toDouble()
 
+                // Polymorphic instantiation based on user selection
                 val student: Student = when (typeChoice) {
                     "2" -> Masters(id, name, course, mark)
                     else -> Undergraduate(id, name, course, mark)
@@ -43,6 +44,7 @@ fun main() {
                 val student = uni.findStudentById(id)
 
                 if (student != null) {
+                    // Polymorphic call to toString() and getGrade()
                     println(student)
                 } else {
                     println("Student not found.")

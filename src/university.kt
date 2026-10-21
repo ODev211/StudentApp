@@ -1,15 +1,19 @@
 class University {
     var modules = mutableListOf<Module>()
+
+    // Using a MutableMap with student ID as the key for faster lookups
     var students = mutableMapOf<String, Student>()
 
     fun enrolStudent(student: Student) {
         students[student.id] = student
     }
 
+    // Efficient lookup by ID using the Map key
     fun findStudentById(id: String): Student? {
         return students[id]
     }
 
+    // Search by name iterates over the map values
     fun findStudentsByName(name: String): MutableList<Student> {
         val matches = mutableListOf<Student>()
         for (student in students.values) {
