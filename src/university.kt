@@ -1,34 +1,22 @@
 class University {
-
     var modules = mutableListOf<Module>()
-    var students = mutableListOf<Student>()
+    var students = mutableMapOf<String, Student>()
 
     fun enrolStudent(student: Student) {
-        students.add(student)
+        students[student.id] = student
     }
 
     fun findStudentById(id: String): Student? {
-
-        for (student in students) {
-            if (student.id == id) {
-                return student
-            }
-        }
-
-        return null
+        return students[id]
     }
 
     fun findStudentsByName(name: String): MutableList<Student> {
-
         val matches = mutableListOf<Student>()
-
-        for (student in students) {
-
+        for (student in students.values) {
             if (student.name == name) {
                 matches.add(student)
             }
         }
-
         return matches
     }
 }
